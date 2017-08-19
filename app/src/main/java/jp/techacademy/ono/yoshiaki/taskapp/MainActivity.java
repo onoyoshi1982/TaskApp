@@ -9,6 +9,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
@@ -123,7 +124,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        View.OnClickListener mSearchButton = new View.OnClickListener() {
+        mSearchButton = (Button)findViewById(R.id.search_button);
+        mSearchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Realmデータベースから、「全てのデータを取得して新しい日時順に並べた結果」を取得
@@ -141,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
                 // 表示を更新するために、アダプターにデータが変更されたことを知らせる
                 mTaskAdapter.notifyDataSetChanged();
             }
-        };
+        });
 
         reloadListView();
 
